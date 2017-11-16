@@ -1,0 +1,68 @@
+﻿<h1>Talents</h1>
+
+<div ng-app="appListPersons" ng-controller="listPersons">
+    <div class="loading" ng-show="divLoad">Loading&#8230;</div>
+    <div class="form-group" style="margin-top:30px;">
+        <label class="control-label" for="filter">Filter / Filtrar</label>
+        <input type="text" class="form-control" ng-model="filterPerson" />
+    </div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Name / Nome</th>
+                <th>E-mail</th>
+                <th>Skype</th>
+                <th><button class="btn btn-success" ng-click="NewPerson()">New account</button></th>
+            </tr>
+            <tr dir-paginate="item in ListPersons | filter: filterPerson | itemsPerPage:5">
+                <td>{{ item.name }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.skype }}</td>
+                <td>
+                    <a class="glyphicon glyphicon-pencil" style="cursor:pointer;float:left;margin-right:40px;" title="Edit / Editar" ng-click="EditPerson(item)"></a>
+                    <a class="glyphicon glyphicon-user" style="cursor:pointer;float:left;margin-right:40px;" title="Edit profile / Editar perfil" ng-click="EditProfile(item)"></a>
+                    <a class="glyphicon glyphicon-remove" style="cursor:pointer;float:left;" title="Delete / Excluir" ng-click="DeletePerson(item)"></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top:30px;">
+        <dir-pagination-controls id="Pagination" max-size="10" boundary-links="true"></dir-pagination-controls>
+    </div>
+    <input type="hidden" id="hdnIdPerson" value="{{IdPerson}}"/>
+    <input type="hidden" id="hdnIdProfile" value="{{IdProfile}}" />
+</div>
+
+<script src="~/lib/angular/angular.js"></script>
+<script src="~/app/Person/ListPersonsController.js"></script>
+<script src="~/js/dirPagination.js"></script>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var hostSite = window.location.host;
+
+            $('#titleTalent').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aHome').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdateData').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/EditPerson/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdatePassword').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/UpdatePassword/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aLogoff').click(function () {
+                window.location.href = "http://" + hostSite + "/Login";
+            });
+        });
+    </script>
+}

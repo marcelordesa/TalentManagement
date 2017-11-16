@@ -1,0 +1,218 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>New account</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Talent Management</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        <div ng-app="appCreatePerson" ng-controller="createPerson" class="form-group" style="margin:50px;">
+            <div class="loading" ng-show="divLoad">Loading&#8230;</div>
+            <h2>New account / Nova conta</h2>
+            <br />
+            <div ng-show="isStepOne">
+                <label class="control-label" for="Nome">E-mail</label>
+                <input type="text" class="form-control" id="email" name="email" ng-model="email" style="margin-bottom:15px;" required />
+                <label class="control-label" for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" ng-model="password" style="margin-bottom:15px;" required />
+                <label class="control-label" for="repassword">Re-Password</label>
+                <input type="password" class="form-control" id="repassword" name="repassword" ng-model="repassword" style="margin-bottom:15px;" required />
+                <label class="control-label" for="name">Name / Nome</label>
+                <input type="text" class="form-control" id="name" name="name" ng-model="name" style="margin-bottom:15px;" required />
+                <label class="control-label" for="skype">Skype</label>
+                <input type="text" class="form-control" id="skype" name="skype" ng-model="skype" style="margin-bottom:15px;" required />
+                <label class="control-label" for="phone">Phone / Telefone - Whatsapp</label>
+                <input type="text" class="form-control" id="phone" name="phone" ng-model="phone" ui-mask="(99) 99999.9999" style="margin-bottom:15px;" required />
+                <label class="control-label" for="linkedIn">LinkedIn</label>
+                <input type="text" class="form-control" id="linkedIn" name="linkedIn" ng-model="linkedIn" style="margin-bottom:15px;" />
+                <label class="control-label" for="state">State / Estado</label><br>
+                <select class="form-control" id="state" name="state" ng-model="stateSelected" ng-change="GetCitys(stateSelected)" ng-options="i.name for i in ListStates" style="margin-bottom:15px;" required></select>
+                <label class="control-label" for="city">City / Cidade</label><br>
+                <select class="form-control" id="city" name="city" ng-model="citySelected" ng-options="i.name for i in ListCity" style="margin-bottom:15px;" required></select>
+                <label class="control-label" for="portfolio">Portfolio</label>
+                <input type="text" class="form-control" id="portfolio" name="portfolio" ng-model="portfolio" style="margin-bottom:15px;" />
+                <div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepTwo()" style="margin-top:10px;">Next / Próximo</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" ng-click="Cancel()" style="margin-top:10px;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isStepTwo">
+                <label class="control-label">What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?</label>
+                <div style="margin-bottom:15px;">
+                    <div ng-repeat="i in ListWillingness">
+                        <label><input type="checkbox" ng-click="CheckedWillingness(i)" /> {{i.description}}</label>
+                    </div>
+                </div>
+                <label class="control-label">What's the best time to work for you? / Pra você qual é o melhor horário para trabalhar?</label>
+                <div style="margin-bottom:15px;">
+                    <div ng-repeat="i in ListTimeWork">
+                        <label><input type="checkbox" ng-click="CheckedTimeWork(i)" /> {{i.description}}</label>
+                    </div>
+                </div>
+                <label class="control-label" for="salary">What is your hourly salary requirements? / Qual sua pretensão salarial por hora?</label>
+                <input type="text" class="form-control" id="salary" name="salary" ng-model="salary" ui-mask="999,99" />
+                <label style="margin-bottom:15px;font-weight:normal;font-size:8;color:grey">ex: 050,00</label>
+                <div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepOne()" style="margin-top:10px;">Back / Voltar</button>
+                    </div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepThree()" style="margin-top:10px;">Next / Próximo</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" ng-click="Cancel()" style="margin-top:10px;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isStepThree">
+                <label class="control-label">Bank Information / Paypal / Itau etc</label><br />
+                <label class="control-label" style="margin-bottom:15px;">Banco brasileiro precisa: Nome, CPF, Banco, Agencia, Conta Corrente ou Poupanca</label>
+                <label class="control-label">Bank Information / Informação bancária</label>
+                <label class="control-label">You can choose to receive your payment through Paypal, PagSeguro or conventional bank accounts / Você pode optar em receber</label>
+                <label class="control-label" style="margin-bottom:15px;">seu pagamento pelo Paypal, PagSeguro ou contas bancarias convencionais</label>
+                <br />
+                <label class="control-label" for="cpf">Only for Brazilians / CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" ng-model="cpf" ui-mask="999.999.999-99" style="margin-bottom:15px;" />
+                <label class="control-label" for="bank">Bank / Banco ( Itau, Bradesco, ect..)</label>
+                <select class="form-control" id="bank" name="bank" ng-model="bankSelected" ng-options="i.name for i in ListBank" style="margin-bottom:15px;"></select>
+                <label class="control-label" for="agency">Agency / Agencia</label>
+                <input type="text" class="form-control" id="agency" name="agency" ng-model="agency" style="margin-bottom:15px;" />
+                <label class="control-label" for="accountType">Account Type / Tipo de conta</label>
+                <select class="form-control" id="accountType" name="accountType" ng-model="accountTypeSelected" ng-options="i.name for i in ListAccountType" style="margin-bottom:15px;"></select>
+                <label class="control-label" for="accountNumber">Account Number / Número da conta</label>
+                <input type="text" class="form-control" id="accountNumber" name="accountNumber" ng-model="accountNumber" style="margin-bottom:15px;" />
+                <div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepTwo()" style="margin-top:10px;">Back / Voltar</button>
+                    </div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepFour()" style="margin-top:10px;">Next / Próximo</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" ng-click="Cancel()" style="margin-top:10px;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isStepFour">
+                <label class="control-label" style="margin-bottom:15px;">Knowledge / Conhecimentos</label><br />
+                <label class="control-label">Rate yourself from 0 to 5 for the knowledge specified below, and that's okay if you do not know many things, the important</label>
+                <label class="control-label">thing is to be honest! / Avalie-se de 0 a 5 quanto aos conhecimentos especificados abaixo, e tudo bem se não souber de</label>
+                <label class="control-label" style="margin-bottom:15px;">muitas coisas, o importante é que seja sincero!</label>
+                <div style="margin-bottom:15px;">
+                    <div ng-repeat="i in ListKnowledgeLevel" style="margin-bottom:15px;">
+                        <label>{{i.description}}</label>
+                        <br />
+                        Nao conheco / I don't know
+                        <input type="radio" name="{{i.description}}" value="0" ng-click="KnowledgeSelect(i, 0)" ng-checked="i.level == 0? true : false" style="margin-left:5px;" />0
+                        <input type="radio" name="{{i.description}}" value="1" ng-click="KnowledgeSelect(i, 1)" ng-checked="i.level == 1? true : false" />1
+                        <input type="radio" name="{{i.description}}" value="2" ng-click="KnowledgeSelect(i, 2)" ng-checked="i.level == 2? true : false" />2
+                        <input type="radio" name="{{i.description}}" value="3" ng-click="KnowledgeSelect(i, 3)" ng-checked="i.level == 3? true : false" />3
+                        <input type="radio" name="{{i.description}}" value="4" ng-click="KnowledgeSelect(i, 4)" ng-checked="i.level == 4? true : false" />4
+                        <input type="radio" name="{{i.description}}" value="5" ng-click="KnowledgeSelect(i, 5)" ng-checked="i.level == 5? true : false" style="margin-right:5px;" />5
+                        Senior
+                    </div>
+                </div>
+                <label class="control-label">Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece</label>
+                <label class="control-label" for="otherKnowledge">mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.</label>
+                <input type="text" class="form-control" id="otherKnowledge" name="otherKnowledge" ng-model="otherKnowledge" style="margin-bottom:15px;" />
+                <label class="control-label">Enter the link here CRUD (create, update, delete)- read information in the welcome document quoted in the form</label>
+                <label class="control-label">description./ Insira aqui o link do CRUD (create, update, delete)- ler informações no documento de Boas Vindas citado na</label>
+                <label class="control-label">descrição do formulário.</label>
+                <label class="control-label">Tutorials - Check out our tutorials and material explaining how the company works / Confira nossos tutoriais e material</label>
+                <label class="control-label" style="margin-bottom:15px;">explicando como a empresa funciona</label>
+                <br />
+                <a href="https://docs.google.com/document/d/145QuJ8-efr-pmNGV-2DOOGHD-1dc3MERSeL5g0XoqmM" style="margin-bottom:15px;">https://docs.google.com/document/d/145QuJ8-efr-pmNGV-2DOOGHD-1dc3MERSeL5g0XoqmM</a>
+                <br />
+                <label class="control-label" for="linkCrud" style="margin-top:15px;">Link CRUD</label>
+                <input type="text" class="form-control" id="linkCrud" name="linkCrud" ng-model="linkCrud" style="margin-bottom:15px;" />
+                <div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-warning" ng-click="NextStepThree()" style="margin-top:10px;">Back / Voltar</button>
+                    </div>
+                </div>
+                <div>
+                    <div style="float:left;margin-right:30px;">
+                        <button class="btn btn-success" ng-click="Save()" style="margin-top:10px;">Save</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" ng-click="Cancel()" style="margin-top:10px;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2017 - Talent Management</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"
+                asp-fallback-src="~/lib/angular/angular.min.js"
+                asp-fallback-test="window.angular">
+        </script>
+
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-ui-mask/dist/mask.js"></script>
+    <script src="~/app/Login/CreatePersonController.js"></script>
+</body>
+</html>

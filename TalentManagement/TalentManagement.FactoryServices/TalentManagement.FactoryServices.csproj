@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TalentManagement.Domain\TalentManagement.Domain.csproj" />
+    <ProjectReference Include="..\TalentManagement.FactoryRepository\TalentManagement.FactoryRepository.csproj" />
+    <ProjectReference Include="..\TalentManagement.Services\TalentManagement.Services.csproj" />
+  </ItemGroup>
+
+</Project>

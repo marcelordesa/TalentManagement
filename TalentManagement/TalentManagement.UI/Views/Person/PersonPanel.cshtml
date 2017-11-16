@@ -1,0 +1,50 @@
+﻿<div ng-app="appPersonPanel" ng-controller="personPanel" class="form-group" style="margin:50px;">
+    <div class="loading" ng-show="divLoad">Loading&#8230;</div>
+    <h2>Panel of {{PersonSelected.name}} / Painel do {{PersonSelected.name}}</h2>
+    <br />
+    <br />
+    <label class="control-label" for="email">E-mail</label>
+    <br />
+    {{PersonSelected.email}}
+    <br />
+    <br />
+    <label class="control-label" for="name">Name / Nome</label>
+    <br />
+    {{PersonSelected.name}}
+    <br />
+    <br />
+    <input type="hidden" id="hdnIdPerson" value="{{IdPerson}}" />
+    <input type="hidden" id="hdnIdProfile" value="{{IdProfile}}" />
+</div>
+
+<script src="~/lib/angular/angular.js"></script>
+<script src="~/app/Person/PersonPanelController.js"></script>
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+            var hostSite = window.location.host;
+
+            $('#titleTalent').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aHome').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdateData').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/EditPerson/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdatePassword').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/UpdatePassword/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aLogoff').click(function () {
+                window.location.href = "http://" + hostSite + "/Login";
+            });
+        });
+    </script>
+}

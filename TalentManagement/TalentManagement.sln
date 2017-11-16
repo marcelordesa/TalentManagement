@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Infrastructure", "1-Infrastructure", "{9B7ACF20-31C6-4128-946E-EBEA2A7655CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{E3E8A9D8-F988-470F-AE9D-1E44DB613BC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{CEF6335B-DC84-48C6-AB97-8A569A4838A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Factory", "4-Factory", "{C401EAAB-7599-4AEA-907F-7420A1750AD0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.Infrastructure", "TalentManagement.Infrastructure\TalentManagement.Infrastructure.csproj", "{3518FCDD-CF0E-4F31-B88B-6BFBB8140993}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.Services", "TalentManagement.Services\TalentManagement.Services.csproj", "{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.Domain", "TalentManagement.Domain\TalentManagement.Domain.csproj", "{CD71C671-1A78-48AD-91C7-7559BC1A4DB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.FactoryRepository", "TalentManagement.FactoryRepository\TalentManagement.FactoryRepository.csproj", "{E5F7DA58-9E39-450D-9493-1355BB995A83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.FactoryServices", "TalentManagement.FactoryServices\TalentManagement.FactoryServices.csproj", "{C28998CF-BEC0-4B86-A51C-37B3B25C6E77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.UI", "TalentManagement.UI\TalentManagement.UI.csproj", "{7788EE19-E7F2-4C6E-BA9A-3FA6FEF65CF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentManagement.API", "TalentManagement.API\TalentManagement.API.csproj", "{7D499B0E-FA7C-4356-8757-79DD7617EDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentManagement.UnitTest", "TalentManagement.UnitTest\TalentManagement.UnitTest.csproj", "{CBF3BE6E-F34B-4D36-8B8E-BD2E35804946}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3518FCDD-CF0E-4F31-B88B-6BFBB8140993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3518FCDD-CF0E-4F31-B88B-6BFBB8140993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3518FCDD-CF0E-4F31-B88B-6BFBB8140993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3518FCDD-CF0E-4F31-B88B-6BFBB8140993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD71C671-1A78-48AD-91C7-7559BC1A4DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD71C671-1A78-48AD-91C7-7559BC1A4DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD71C671-1A78-48AD-91C7-7559BC1A4DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD71C671-1A78-48AD-91C7-7559BC1A4DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F7DA58-9E39-450D-9493-1355BB995A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F7DA58-9E39-450D-9493-1355BB995A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F7DA58-9E39-450D-9493-1355BB995A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F7DA58-9E39-450D-9493-1355BB995A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28998CF-BEC0-4B86-A51C-37B3B25C6E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28998CF-BEC0-4B86-A51C-37B3B25C6E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28998CF-BEC0-4B86-A51C-37B3B25C6E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28998CF-BEC0-4B86-A51C-37B3B25C6E77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7788EE19-E7F2-4C6E-BA9A-3FA6FEF65CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7788EE19-E7F2-4C6E-BA9A-3FA6FEF65CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7788EE19-E7F2-4C6E-BA9A-3FA6FEF65CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7788EE19-E7F2-4C6E-BA9A-3FA6FEF65CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D499B0E-FA7C-4356-8757-79DD7617EDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D499B0E-FA7C-4356-8757-79DD7617EDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D499B0E-FA7C-4356-8757-79DD7617EDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D499B0E-FA7C-4356-8757-79DD7617EDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF3BE6E-F34B-4D36-8B8E-BD2E35804946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF3BE6E-F34B-4D36-8B8E-BD2E35804946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF3BE6E-F34B-4D36-8B8E-BD2E35804946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF3BE6E-F34B-4D36-8B8E-BD2E35804946}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3518FCDD-CF0E-4F31-B88B-6BFBB8140993} = {9B7ACF20-31C6-4128-946E-EBEA2A7655CB}
+		{C1D2AC2A-4F5C-44C5-B593-20382AAB0A6C} = {E3E8A9D8-F988-470F-AE9D-1E44DB613BC7}
+		{CD71C671-1A78-48AD-91C7-7559BC1A4DB1} = {CEF6335B-DC84-48C6-AB97-8A569A4838A5}
+		{E5F7DA58-9E39-450D-9493-1355BB995A83} = {C401EAAB-7599-4AEA-907F-7420A1750AD0}
+		{C28998CF-BEC0-4B86-A51C-37B3B25C6E77} = {C401EAAB-7599-4AEA-907F-7420A1750AD0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {416CC6FD-6C35-460F-B646-CCED77A4DEDE}
+	EndGlobalSection
+EndGlobal

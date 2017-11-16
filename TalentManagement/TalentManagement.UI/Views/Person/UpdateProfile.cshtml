@@ -1,0 +1,61 @@
+﻿<div ng-app="appUpdateProfile" ng-controller="updateProfile" class="form-group" style="margin:50px;">
+    <div class="loading" ng-show="divLoad">Loading&#8230;</div>
+    <h2>Update profile / Atualizar perfil</h2>
+    <br />
+    <br />
+    <label class="control-label" for="email">E-mail</label>
+    <br />
+    {{PersonSelected.email}}
+    <br />
+    <br />
+    <label class="control-label" for="name">Name / Nome</label>
+    <br />
+    {{PersonSelected.name}}
+    <br />
+    <br />
+    <label class="control-label" for="profile">Profile / Perfil</label><br>
+    <select class="form-control" id="profile" name="profile" ng-model="ProfileSelected" ng-options="i.description for i in ListProfile" style="margin-bottom:15px;" required></select>
+    <div>
+        <div style="float:left;margin-right:30px;">
+            <button class="btn btn-success" ng-click="Save()" style="margin-top:10px;">Save</button>
+        </div>
+        <div>
+            <button class="btn btn-warning" ng-click="Cancel()" style="margin-top:10px;">Cancel</button>
+        </div>
+    </div>
+    <input type="hidden" id="hdnIdPerson" value="{{IdPerson}}" />
+    <input type="hidden" id="hdnIdProfile" value="{{IdProfile}}" />
+</div>
+
+<script src="~/lib/angular/angular.js"></script>
+<script src="~/app/Person/UpdateProfileController.js"></script>
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+            var hostSite = window.location.host;
+
+            $('#titleTalent').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aHome').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/Index/" + $('#hdnIdProfile').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdateData').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/EditPerson/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aUpdatePassword').click(function () {
+                window.location.href = "http://" + hostSite + "/Person/UpdatePassword/" + $('#hdnIdPerson').val() + "/" + $('#hdnIdPerson').val();
+            });
+
+            $('#aLogoff').click(function () {
+                window.location.href = "http://" + hostSite + "/Login";
+            });
+        });
+    </script>
+}
+
