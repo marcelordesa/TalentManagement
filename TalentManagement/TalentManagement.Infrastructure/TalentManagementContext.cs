@@ -9,15 +9,9 @@ namespace TalentManagement.Infrastructure
 {
     public class TalentManagementContext : DbContext
     {
-        public TalentManagementContext() : base()
-        {
+        public TalentManagementContext() { }
 
-        }
-
-        public TalentManagementContext(DbContextOptions option) : base(option)
-        {
-
-        }
+        public TalentManagementContext(DbContextOptions option) : base(option) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
