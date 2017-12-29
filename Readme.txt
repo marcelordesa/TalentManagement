@@ -8,7 +8,7 @@ Além disto utilizei alguns patterns (Injeção de dependencia, Factory, Repository
 
 - Se precisar mudar a string de conexão, a mesma está no projeto TalentManagement.Infrastructure, na classe TalentManagementContext, no método OnConfiguring e também no projeto do TalentManagement.Api e modificar a string de conexão no appsetting.json;
 
-- Para criar o banco de dados, clique com o botão direito do mouse no projeto TalentManagement.Infrastructure e selecione a opção "Set as StartUp Project";
+- Para criar o banco de dados, clique com o botão direito do mouse no projeto TalentManagement.API e selecione a opção "Set as StartUp Project";
 
 - No Package Manager Console, no default project, selecione o projeto TalentManagement.Infrastructure e rode os comandos:
   - Add-Migration NomeDeSuaEscolha;
